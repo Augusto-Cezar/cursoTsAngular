@@ -7,21 +7,27 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
-import { ListUsersServicesComponent } from './services/list-users-services/list-users-services.component';
+import { HttpClientModule } from '@angular/common/http';
+import { appRoutingModule } from './app.routing.module';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { ListarProdutosComponent } from './listar-produtos/listar-produtos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastroComponent,
     ListUsersComponent,
-    ListUsersServicesComponent
+    CarrinhoComponent,
+    ListarProdutosComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
+    appRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

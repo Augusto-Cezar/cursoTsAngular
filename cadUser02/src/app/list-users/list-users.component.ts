@@ -1,6 +1,7 @@
-import { CdkTableDataSourceInput } from '@angular/cdk/table';
 import { Component, OnInit } from '@angular/core';
 import { IUsuario } from '../Models/iusuarios';
+import { ListUsersServicesComponent } from '../list-users-services/list-users-services.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-users',
@@ -8,6 +9,8 @@ import { IUsuario } from '../Models/iusuarios';
   styleUrls: ['./list-users.component.css']
 })
 export class ListUsersComponent implements OnInit {
+
+  constructor(private service: ListUsersServicesComponent, private router:Router){}
 
   displayedColumns = ['id', 'first_name', 'last_name', 'email'];
  
@@ -31,12 +34,21 @@ export class ListUsersComponent implements OnInit {
   ]
 
 ngOnInit(): void {
-
+  this.pesquisar();
 }
 
 pesquisar(): void{
-  this.dataSource = this.listaUsuarios;
+ this.service.listarUsuarios().subscribe((response) => {
+  this.dataSource = response;
+ })
+}
 
+abrirListaProdutos():void{
+  this.router.navigate(['/produtos']);
+}
+
+abrirCarrinho():void{
+  this.router.navigate(['/carrinho']);
 }
 
 }
